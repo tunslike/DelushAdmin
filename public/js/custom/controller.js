@@ -539,6 +539,141 @@ $('#btnCreateFoodItem').click(function () {
 })
 //end of function
 
+//function to show store setup
+function showStoreSetupData() {
+
+    //ajax request
+    $.ajax({
+        type: "POST",
+        data: {},
+        url: "http://localhost/delushadmin/dashboard/loadBulkOrderDiscount",
+        success: function (data) {
+
+            var response = JSON.parse(data);
+        
+            $('#bulkDiscount').val(response.SETUP_VALUE);   
+
+        },
+    });
+
+    //hide modal
+    $('#store_setup_config').modal('show');
+}
+// end of function
+
+// function to log out user
+function logoutUser() {
+     // show prompt
+     Swal.fire({
+        text: "Do you want to logout?",
+        icon: "question",
+        buttonsStyling: false,
+        showCancelButton: true,
+        confirmButtonText: "Yes!",
+        cancelButtonText: 'Cancel',
+        customClass: {
+            cancelButton: 'btn btn-danger',
+            confirmButton: "btn btn-primary"
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+
+         //ajax request
+            $.ajax({
+                type: "POST",
+                data: {},
+                url: "http://localhost/delushadmin/account/logoutUser",
+                success: function (data) {
+                
+                    window.location.replace("http://localhost/delushadmin/signin");
+                    return;
+    
+                },
+            });
+        }
+      });
+}
+// end of function
+
+
+//function to save store setup
+$('#btnSaveStoreSetup').click(function () {
+    
+    //get details
+    let bulkDiscount = $('#bulkDiscount').val()
+    let paymentMethod = $('#paymentMethod').val()
+    let deliveryFee = $('#deliveryFee').val()
+    let deliverPack = $('#deliverPack').val()
+
+    if(bulkDiscount == '' || paymentMethod == '' || deliveryFee == '' || deliverPack == '') {
+        showErrorAlert('Please enter all fields!')
+        return false;
+    }
+
+    
+     // show prompt
+     Swal.fire({
+        text: "Do you want to save store settings?",
+        icon: "question",
+        buttonsStyling: false,
+        showCancelButton: true,
+        confirmButtonText: "Proceed!",
+        cancelButtonText: 'Cancel',
+        customClass: {
+            cancelButton: 'btn btn-danger',
+            confirmButton: "btn btn-primary"
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+
+        // Show page loading
+        KTApp.showPageLoading();
+
+         //ajax request
+            $.ajax({
+                type: "POST",
+                data: { bulk_discount_value: bulkDiscount, paymentMethod: paymentMethod, deliveryFee: deliveryFee, deliverPack:deliverPack},
+                url: "http://localhost/delushadmin/dashboard/saveStoreSetup",
+                success: function (data) {
+
+                    //hide
+                    KTApp.hidePageLoading();
+
+                    $('#store_setup_config').modal('hide');
+
+                    //check data
+                    if(data == 1) {
+
+                        //clear data
+                        $('#bulkDiscount').val('')
+
+                        Swal.fire({
+                            title: "Save Store Setup!",
+                            text: "store setup saved successfully!",
+                            icon: "success"
+                          });
+
+                    }else {
+
+                         //clear data
+                         $('#bulkDiscount').val('')
+
+                        Swal.fire({
+                            title: "Save Store Setup",
+                            text: "Unable to process your request, please retry!",
+                            icon: "error"
+                          });
+                    }
+    
+                },
+            });
+        }
+      });
+    
+        
+})
+//end of function
+
 // function to disable food menu
 function disableFoodMenu(foodMenuID) {
 

@@ -138,6 +138,29 @@ class UserAccount {
         }
     }
 
+    public function logoutUser($userid) {
+
+        try{
+            
+            $this->db->query("UPDATE Delush_USER_ENTRY SET IS_LOGGED = 0 WHERE ENTRY_ID = :entryid");
+    
+            //Bind values
+            $this->db->bind(':entryid', $userid);
+        
+            //Execute function
+            if ($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+    
+            }catch(PDOException $e){
+                echo 'ERROR!';
+                print_r( $e );
+            }
+
+    }
+
     public function login($username, $password, $ipaddr) {
 
         $this->db->query('SELECT ENTRY_ID, USERNAME, FIRST_NAME, LAST_NAME, PHONE_NUMBER, EMAIL_ADDRESS, ROLE_ID,
@@ -148,30 +171,36 @@ class UserAccount {
         $this->db->bind(':username', $username);
 
         $rowData = $this->db->single();
-        
-        $accountid = $rowData->ENTRY_ID;
-        $email = $rowData->EMAIL_ADDRESS;
-        $firstLogin = $rowData->FIRST_LOGIN_DATE;  
 
-        //get password
-        $this->db->query('SELECT ACCESS_CODE FROM Delush_USER_ACCESS WHERE STATUS = 0 AND ENTRY_ID = :accountid');
+        if($rowData) {
+                
+            $accountid = $rowData->ENTRY_ID;
+            $email = $rowData->EMAIL_ADDRESS;
+            $firstLogin = $rowData->FIRST_LOGIN_DATE;  
 
-        //Bind value
-        $this->db->bind(':accountid', $accountid);
+            //get password
+            $this->db->query('SELECT ACCESS_CODE FROM Delush_USER_ACCESS WHERE STATUS = 0 AND ENTRY_ID = :accountid');
 
-        $row = $this->db->single();
+            //Bind value
+            $this->db->bind(':accountid', $accountid);
 
-        $hashedPassword = $row->ACCESS_CODE;
+            $row = $this->db->single();
 
-        if (password_verify($password, $hashedPassword)) {
+            $hashedPassword = $row->ACCESS_CODE;
 
-            $this->ActivateUserLogin($accountid, $firstLogin, $ipaddr);
+            if (password_verify($password, $hashedPassword)) {
 
-            return $rowData;
-            
-        } else {
+                $this->ActivateUserLogin($accountid, $firstLogin, $ipaddr);
+
+                return $rowData;
+                
+            } else {
+                return false;
+            }
+        }else {
             return false;
         }
+       
      }
 
     //update user login details

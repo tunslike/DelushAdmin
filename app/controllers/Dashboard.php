@@ -198,6 +198,57 @@ class Dashboard extends Controller {
     }
     // ************* END OF FUNCTION ****************** //
 
+
+     // ************** save store setup ******************* //
+     public function saveStoreSetup() {
+
+        if(isLoggedIn()){
+            
+            $userid = $_SESSION['user_id'];
+            
+        }else{
+
+            header("Location: " . URLROOT . "homehome?isLogged=0");
+        }
+
+        //Check for post
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            //Sanitize post data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            $data = [
+
+                'paymentMethod' => trim($_POST['paymentMethod']),
+                'deliveryFee' => trim($_POST['deliveryFee']),
+                'deliverPack' => trim($_POST['deliverPack']),
+                'bulk_value' => trim($_POST['bulk_discount_value']),
+                'userid' => $userid,
+                'fieldError' => '',
+            ];
+
+            //validate error and post 
+            if ($data['fieldError'] == '') {
+
+                // create
+                $payment = $this->userModel->saveStoreSetup($data['paymentMethod'], 'PAYMENT METHOD', $userid);
+                $deliveryFee = $this->userModel->saveStoreSetup($data['deliveryFee'], 'DELIVERY FEE', $userid);
+                $deliveryPack = $this->userModel->saveStoreSetup($data['deliverPack'], 'DELIVERY PACK', $userid);
+                $bulkValue = $this->userModel->saveStoreSetup($data['bulk_value'], 'BULK DISCOUNT', $userid);
+
+                // create
+                if($payment || $deliveryFee || $deliveryPack || $bulkValue) {
+
+                    echo '1';
+                  
+                }else{
+                    echo '2';
+                }
+            }
+        }
+    }
+    // ************* END OF FUNCTION ****************** //
+
     // function to load order break down items
     public function loadOrderItems() {
 
@@ -222,6 +273,26 @@ class Dashboard extends Controller {
 
                 echo json_encode($orderList);
            }
+
+    }// end of function
+
+
+     // function to load order break down items
+     public function loadBulkOrderDiscount() {
+
+        if(isLoggedIn()){
+            
+            $customerid = $_SESSION['user_id'];
+            
+        }else{
+
+            header("Location: " . URLROOT . "home?isLogged=0");
+        }
+         
+         // create
+         $bulkDiscount = $this->userModel->loadStoreSetup();
+
+         echo json_encode($bulkDiscount);
 
     }// end of function
 

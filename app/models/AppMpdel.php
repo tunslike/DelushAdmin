@@ -164,20 +164,29 @@ class AppMpdel {
             return $results;
     }
 
-
         //function to fetch Dashboard Stats
-        public function loadFoodMenuData($menuid) {
+        public function loadStoreSetup() {
 
             //Prepared statement
-            $this->db->query("SELECT * FROM Delush_FOOD_MENU WHERE FOOD_MENU_ID = :foodMenuId");
-
-            $this->db->bind(':foodMenuId', $menuid);
+            $this->db->query("SELECT * FROM `Delush_STORE_SETUP` WHERE SETUP_NAME = 'BULK DISCOUNT';");
     
             $row = $this->db->single();
     
             return $row;
         }
 
+     //function to fetch Dashboard Stats
+     public function loadFoodMenuData($menuid) {
+
+        //Prepared statement
+        $this->db->query("SELECT * FROM Delush_FOOD_MENU WHERE FOOD_MENU_ID = :foodMenuId");
+
+        $this->db->bind(':foodMenuId', $menuid);
+
+        $row = $this->db->single();
+
+        return $row;
+    }
              //function to fetch Dashboard Stats
              public function updateDisableMenuID($menuid, $userid) {
 
@@ -205,8 +214,6 @@ class AppMpdel {
                         print_r( $e );
                     }   
             }
-
-
     
      // function to create user role
      public function updateFoodMenu($data) {
@@ -242,7 +249,72 @@ class AppMpdel {
                 print_r( $e );
             }   
 
-    }        
+    }    
+    
+    
+      // function to update
+      public function saveStoreSetup($value, $type, $userid) {
+        
+        try{
+
+               //Prepared statement
+               $this->db->query("SELECT * FROM Delush_STORE_SETUP WHERE SETUP_NAME = :setupname");
+
+               $this->db->bind(':setupname', $type);
+
+               $row = $this->db->single();
+
+               if($row) {
+
+                        //update value
+                         $this->db->query("UPDATE Delush_STORE_SETUP SET SETUP_VALUE = :setupvalue, DATE_UPDATED = :dateUpdated, 
+                                          UPDATED_BY = :updatedBy WHERE SETUP_NAME = :setupname");
+
+                        $date =  date('Y-m-d H:i:s');
+                        
+                        //Bind values
+                        $this->db->bind(':setupname', $type);
+                        $this->db->bind(':setupvalue',$value);
+                        $this->db->bind(':dateUpdated', $date);
+                        $this->db->bind(':updatedBy', $userid);
+
+                        //Execute function
+                        if ($this->db->execute()) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+
+               }else {
+
+                      // create new value
+                      $this->db->query("INSERT INTO Delush_STORE_SETUP (SETUP_ID, SETUP_NAME, SETUP_VALUE, DATE_CREATED, CREATED_BY)
+                                        VALUES (:setupid, :setupname, :setupvalue, :dateCreated, :createdBy)");
+
+                        $date =  date('Y-m-d H:i:s');
+                        $setupid = $this->getCustomerID();
+                        
+                        //Bind values
+                        $this->db->bind(':setupid', $setupid);
+                        $this->db->bind(':setupname', $type);
+                        $this->db->bind(':setupvalue',$value);
+                        $this->db->bind(':dateCreated', $date);
+                        $this->db->bind(':createdBy', $userid);
+
+                        //Execute function
+                        if ($this->db->execute()) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+               }
+
+            }catch(PDOException $e){
+                echo 'ERROR!';
+                print_r( $e );
+            }   
+
+    }    
 
      // function to create user role
      public function createFoodMenu($data) {

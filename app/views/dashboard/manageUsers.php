@@ -1010,9 +1010,6 @@
 								<!--end::Page title-->
 								<!--begin::Action group-->
 								<div class="d-flex align-items-stretch overflow-auto pt-3 pt-lg-0">
-								<?php
-   require APPROOT . '/views/includes/dashboard/configureView.php'; 
-   ?>
 									<!--begin::Action wrapper-->
 									<div class="d-flex align-items-center">
 										<!--begin::Label-->

@@ -31,6 +31,30 @@
 									<!--end::Title-->
 								</div>
 								<!--begin::Heading-->
+
+
+								<?php if(isset($data['passwordError'])) : ?>
+
+									<!--begin::Alert-->
+<div class="alert alert-danger d-flex align-items-center p-5">
+    <!--begin::Icon-->
+    <i class="ki-duotone ki-cross-circle fs-2hx text-danger me-4">
+		<span class="path1"></span><span class="path2"></span></i>
+    <!--end::Icon-->
+
+    <!--begin::Wrapper-->
+    <div class="d-flex flex-column">
+    
+        <!--begin::Content-->
+        <span><?php echo $data['passwordError']; ?></span>
+        <!--end::Content-->
+    </div>
+    <!--end::Wrapper-->
+</div>
+<!--end::Alert-->
+
+								<?php endif; ?>
+
 								<!--begin::Input group=-->
 								<div class="fv-row mb-8">
 									<!--begin::Email-->
@@ -48,7 +72,7 @@
 								<div class="d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-8">
 									<div></div>
 									<!--begin::Link-->
-									<a style="color:#258a53;" href="authentication/layouts/corporate/reset-password.html" class="link-primary">Forgot Password ?</a>
+									<a style="color:#258a53;" href="#" class="link-primary">Forgot Password ?</a>
 									<!--end::Link-->
 								</div>
 								<!--end::Wrapper-->

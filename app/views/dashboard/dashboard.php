@@ -43,7 +43,21 @@
 										<a href="#" class="text-white text-hover-primary fs-6 fw-bold"><?php echo ucfirst($_SESSION['firstname']); ?></a>
 										<!--end::Username-->
 										<!--begin::Description-->
-										<span class="text-gray-600 fw-semibold d-block fs-8 mb-1">Python Dev</span>
+										<span class="text-gray-600 fw-semibold d-block fs-8 mb-1"><?php 
+
+											switch($_SESSION['role']) {
+												case '001':
+													echo 'Manager';
+												break;
+												case '002':
+													echo 'Operator';
+												break;
+												case 'Guest':
+													echo '';
+												break;
+											};
+										
+										?></span>
 										<!--end::Description-->
 										<!--begin::Label-->
 										<div class="d-flex align-items-center text-success fs-9">
@@ -53,101 +67,16 @@
 									<!--end::Info-->
 									<!--begin::User menu-->
 									<div class="me-n2">
-										<!--begin::Action-->
-										<a href="#" class="btn btn-icon btn-sm btn-active-color-primary mt-n2" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start" data-kt-menu-overflow="true">
-											<i class="ki-duotone ki-setting-2 text-muted fs-1">
-												<span class="path1"></span>
-												<span class="path2"></span>
-											</i>
-										</a>
 										<!--begin::User account menu-->
 										<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-color fw-semibold py-4 fs-6 w-275px" data-kt-menu="true">
-											<!--begin::Menu item-->
-											<div class="menu-item px-3">
-												<div class="menu-content d-flex align-items-center px-3">
-													<!--begin::Avatar-->
-													<div class="symbol symbol-50px me-5">
-														<img alt="Logo" src="assets/media/avatars/300-1.jpg" />
-													</div>
-													<!--end::Avatar-->
-													<!--begin::Username-->
-													<div class="d-flex flex-column">
-														<div class="fw-bold d-flex align-items-center fs-5">Max Smith 
-														<span class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2">Pro</span></div>
-														<a href="#" class="fw-semibold text-muted text-hover-primary fs-7">max@kt.com</a>
-													</div>
-													<!--end::Username-->
-												</div>
-											</div>
-											<!--end::Menu item-->
-											<!--begin::Menu separator-->
-											<div class="separator my-2"></div>
-											<!--end::Menu separator-->
-											<!--begin::Menu item-->
-											<div class="menu-item px-5">
-												<a href="account/overview.html" class="menu-link px-5">My Profile</a>
-											</div>
-											<!--end::Menu item-->
-											<!--begin::Menu item-->
-											<div class="menu-item px-5">
-												<a href="apps/projects/list.html" class="menu-link px-5">
-													<span class="menu-text">My Projects</span>
-													<span class="menu-badge">
-														<span class="badge badge-light-danger badge-circle fw-bold fs-7">3</span>
-													</span>
-												</a>
-											</div>
-											<!--end::Menu item-->
+										
 											<!--begin::Menu item-->
 											<div class="menu-item px-5" data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="right-start" data-kt-menu-offset="-15px, 0">
 												<a href="#" class="menu-link px-5">
 													<span class="menu-title">My Subscription</span>
 													<span class="menu-arrow"></span>
 												</a>
-												<!--begin::Menu sub-->
-												<div class="menu-sub menu-sub-dropdown w-175px py-4">
-													<!--begin::Menu item-->
-													<div class="menu-item px-3">
-														<a href="account/referrals.html" class="menu-link px-5">Referrals</a>
-													</div>
-													<!--end::Menu item-->
-													<!--begin::Menu item-->
-													<div class="menu-item px-3">
-														<a href="account/billing.html" class="menu-link px-5">Billing</a>
-													</div>
-													<!--end::Menu item-->
-													<!--begin::Menu item-->
-													<div class="menu-item px-3">
-														<a href="account/statements.html" class="menu-link px-5">Payments</a>
-													</div>
-													<!--end::Menu item-->
-													<!--begin::Menu item-->
-													<div class="menu-item px-3">
-														<a href="account/statements.html" class="menu-link d-flex flex-stack px-5">Statements 
-														<span class="ms-2 lh-0" data-bs-toggle="tooltip" title="View your statements">
-															<i class="ki-duotone ki-information-5 fs-5">
-																<span class="path1"></span>
-																<span class="path2"></span>
-																<span class="path3"></span>
-															</i>
-														</span></a>
-													</div>
-													<!--end::Menu item-->
-													<!--begin::Menu separator-->
-													<div class="separator my-2"></div>
-													<!--end::Menu separator-->
-													<!--begin::Menu item-->
-													<div class="menu-item px-3">
-														<div class="menu-content px-3">
-															<label class="form-check form-switch form-check-custom form-check-solid">
-																<input class="form-check-input w-30px h-20px" type="checkbox" value="1" checked="checked" name="notifications" />
-																<span class="form-check-label text-muted fs-7">Notifications</span>
-															</label>
-														</div>
-													</div>
-													<!--end::Menu item-->
-												</div>
-												<!--end::Menu sub-->
+											
 											</div>
 											<!--end::Menu item-->
 											<!--begin::Menu item-->
@@ -760,7 +689,7 @@
 					<!--end::Aside menu-->
 					<!--begin::Footer-->
 					<div class="aside-footer flex-column-auto py-5" id="kt_aside_footer">
-						<a href="https://preview.keenthemes.com/html/metronic/docs" style="background-color:#f8285b; color: #fff;" class="btn btn-flex btn-custom btn-primary w-100" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss-="click" title="Click here to logout">
+						<a href="#" onclick="logoutUser();" style="background-color:#f8285b; color: #fff;" class="btn btn-flex btn-custom btn-primary w-100" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss-="click" title="Click here to logout">
 							<span class="btn-label">Logout</span>
 							<i class="ki-duotone ki-document ms-2 fs-2">
 								<span class="path1"></span>
@@ -779,7 +708,9 @@
 						<div class="header-brand">
 							<!--begin::Logo-->
 							<a href="index.html">
-								<img alt="Logo" style="width:150px; height:80px; " src="<?php echo URLROOT ?>/public/img/finserve-logo.jpeg" class="h-25px h-lg-25px" />
+										<div style="display:flex; align-items: 'center;'">
+										<img alt="Logo" style="height:120px; " src="<?php echo URLROOT ?>public/img/delushLogo.png" class="h-45px h-lg-45px" /> <h3 style="color:#fff; margin-left:10px; margin-top: 13px;">Delush Admin</h3>							
+										</div>		
 							</a>
 							<!--end::Logo-->
 							<!--begin::Aside minimize-->
@@ -844,32 +775,6 @@
 								<!--end::Page title-->
 								<!--begin::Action group-->
 								<div class="d-flex align-items-stretch overflow-auto pt-3 pt-lg-0">
-									
-
-								<?php
-   require APPROOT . '/views/includes/dashboard/configureView.php';
-?>
-									
-									<!--begin::Action wrapper-->
-									<div class="d-flex align-items-center">
-										<!--begin::Label-->
-										<span class="fs-7 text-gray-700 fw-bold pe-3 d-none d-xxl-block">Quick Tools:</span>
-										<!--end::Label-->
-										<!--begin::Actions-->
-										<div class="d-flex">
-											<!--begin::Action-->
-											<a href="#" class="btn btn-sm btn-icon btn-icon-muted btn-active-icon-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_invite_friends">
-												<i class="ki-duotone ki-setting-2 fs-1">
-													<span class="path1"></span>
-													<span class="path2"></span>
-												</i>
-											</a>
-											<!--end::Action-->
-							
-										</div>
-										<!--end::Actions-->
-									</div>
-									<!--end::Action wrapper-->
 									<!--begin::Theme mode-->
 									<div class="d-flex align-items-center">
 										<!--begin::Menu toggle-->
@@ -1476,6 +1381,126 @@
                     <button type="button" id="btnCreateFoodItem" class="btn btn-primary">
                         <span class="indicator-label">
                             Create Food Item
+                        </span>
+                        <span class="indicator-progress">
+                            Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                        </span>
+                    </button>
+                    <!--end::Button-->
+                </div>
+                <!--end::Modal footer-->
+            </form>
+            <!--end::Form-->
+        </div>
+        <!--end::Modal content-->
+    </div>
+    <!--end::Modal dialog-->
+</div>
+		<!--end::Modals-->
+
+
+		<!--begin::Modals-->
+		<div class="modal fade" id="store_setup_config" tabindex="-1" style="display: none;" aria-hidden="true">
+    <!--begin::Modal dialog-->
+    <div class="modal-dialog modal-dialog-centered mw-650px">
+        <!--begin::Modal content-->
+        <div class="modal-content">
+            <!--begin::Modal header-->
+            <div class="modal-header" id="kt_modal_create_api_key_header">
+                <!--begin::Modal title-->
+                <h2>Store Setup</h2>
+                <!--end::Modal title-->
+
+                <!--begin::Close-->
+                <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                    <i class="ki-duotone ki-cross fs-1"><span class="path1"></span><span class="path2"></span></i>                </div>
+                <!--end::Close-->
+            </div>
+            <!--end::Modal header-->
+
+            <!--begin::Form-->
+            <form id="kt_modal_create_api_key_form" class="form fv-plugins-bootstrap5 fv-plugins-framework" action="#">
+                <!--begin::Modal body-->
+                <div class="modal-body py-10 px-lg-17">
+                    <!--begin::Scroll-->
+                    <div class="scroll-y me-n7 pe-7" id="kt_modal_create_api_key_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_create_api_key_header" data-kt-scroll-wrappers="#kt_modal_create_api_key_scroll" data-kt-scroll-offset="300px" style="max-height: 293px;">
+
+
+                        <!--begin::Input group-->
+                        <div class="mb-5 fv-row fv-plugins-icon-container">
+                            <!--begin::Label-->
+                            <label class="required fs-5 fw-semibold mb-2">Bulk Discount</label>
+                            <!--end::Label-->
+
+                            <!--begin::Input-->
+                            <input type="number" placeholder="Enter bulk discount here" class="form-control" id="bulkDiscount" name="bulkDiscount">
+                            <!--end::Input-->
+                        <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div></div>
+                        <!--end::Input group-->
+
+
+                        <!--begin::Input group-->
+                        <div class="mb-5 fv-row fv-plugins-icon-container">
+                            <!--begin::Label-->
+                            <label class="required fs-5 fw-semibold mb-2">Payment Method</label>
+                            <!--end::Label-->
+
+                            <!--begin::Input-->
+							<select class="form-select" aria-label="Select example" id="paymentMethod" name="paymentMethod">
+									<option selected="selected" value="">Select here</option>
+									<option value="Pay on Delivery">Pay on Delivery</option>
+								</select>
+                            <!--end::Input-->
+                        <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div></div>
+                        <!--end::Input group-->
+				
+						<!--begin::Input group-->
+                        <div class="row mb-5">
+
+                            <!--begin::Col-->
+                            <div class="col-md-6 fv-row">
+                                <!--begin::Label-->
+                                <label class="required fs-5 fw-semibold mb-2">Delivery Fee</label>
+                                <!--end::Label-->
+
+                                <!--begin::Input-->
+								<input type="number" id="deliveryFee" class="form-control" placeholder="Enter amount here" name="deliveryFee"/>
+                                <!--end::Input-->
+                            </div>
+                            <!--end::Col-->
+
+                            <!--begin::Col-->
+                            <div class="col-md-6 fv-row">
+                                <!--end::Label-->
+                                <label class="required fs-5 fw-semibold mb-2">Delivery Pack</label>
+                                <!--end::Label-->
+
+                                <!--end::Input-->
+                                <input type="number" id="deliverPack" class="form-control" placeholder="Enter amount here" name="deliverPack"/>
+                                <!--end::Input-->
+                            </div>
+                            <!--end::Col-->
+                        </div>
+                        <!--end::Input group-->
+
+                       
+                    </div>
+                    <!--end::Scroll-->
+                </div>
+                <!--end::Modal body-->
+
+                <!--begin::Modal footer-->
+                <div class="modal-footer flex-center">
+                    <!--begin::Button-->
+                    <button type="button" id="kt_modal_create_api_key_cancel" data-bs-dismiss="modal" class="btn btn-danger me-3">
+                        Discard
+                    </button>
+                    <!--end::Button-->
+
+                    <!--begin::Button-->
+                    <button type="button" id="btnSaveStoreSetup" class="btn btn-primary">
+                        <span class="indicator-label">
+                            Save Settings
                         </span>
                         <span class="indicator-progress">
                             Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>

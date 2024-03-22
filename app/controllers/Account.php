@@ -143,6 +143,26 @@ class Account extends Controller {
         
     }
 
+    public function logoutUser() {
+
+        $userid = $_SESSION['user_id'];
+
+        $logoutUser = $this->userModel->logoutUser($userid);
+
+        if($logoutUser) {
+            unset($_SESSION['user_id']);
+            unset($_SESSION['username']);
+            unset($_SESSION['firstname']);
+            unset($_SESSION['mobile']);
+            unset($_SESSION['email']);
+            unset($_SESSION['role']);
+        }
+
+          //redirect to home page
+          header('location:' . URLROOT . '/signin');
+
+    }
+
     public function authenticateUser() {
 
         //Check for post
@@ -174,6 +194,7 @@ class Account extends Controller {
 
                 $loggedInUser = $this->userModel->login($data['username'], $data['password'], $data['remoteIP']);
 
+        
                 if ($loggedInUser) {
 
                     $this->createUserSession($loggedInUser);
@@ -181,6 +202,7 @@ class Account extends Controller {
                 } else {
 
                     $data['passwordError'] = 'Password or username is incorrect. Please try again.';
+
                     $this->view('index', $data);
                 }
 
