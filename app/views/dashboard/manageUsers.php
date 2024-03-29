@@ -927,7 +927,7 @@
 					<!--end::Aside menu-->
 					<!--begin::Footer-->
 					<div class="aside-footer flex-column-auto py-5" id="kt_aside_footer">
-						<a href="https://preview.keenthemes.com/html/metronic/docs" style="background-color:#f8285b; color: #fff;" class="btn btn-flex btn-custom btn-primary w-100" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss-="click" title="Click here to logout">
+					<a href="#" onclick="logoutUser();" style="background-color:#f8285b; color: #fff;" class="btn btn-flex btn-custom btn-primary w-100" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss-="click" title="Click here to logout">
 							<span class="btn-label">Logout</span>
 							<i class="ki-duotone ki-document ms-2 fs-2">
 								<span class="path1"></span>
@@ -946,7 +946,9 @@
 						<div class="header-brand">
 							<!--begin::Logo-->
 							<a href="index.html">
-								<img alt="Logo" style="width:150px; height:80px; " src="<?php echo URLROOT ?>/public/img/finserve-logo.jpeg" class="h-25px h-lg-25px" />
+							<div style="display:flex; align-items: 'center;'">
+							<img alt="Logo" style="height:120px; " src="<?php echo URLROOT ?>public/img/delushLogo.png" class="h-45px h-lg-45px" /> <h3 style="color:#fff; margin-left:10px; margin-top: 13px;">Delush Admin</h3>
+							</div>
 							</a>
 							<!--end::Logo-->
 							<!--begin::Aside minimize-->
@@ -979,20 +981,11 @@
 							<div class="container-xxl py-6 py-lg-0 d-flex flex-column flex-lg-row align-items-lg-stretch justify-content-lg-between">
 								<!--begin::Page title-->
 								<div class="page-title d-flex justify-content-center flex-column me-5">
+								<!--begin::Title-->
+									<h1 class="d-flex flex-column text-gray-900 fw-bold fs-3 mb-0">Dashboard</h1>
+									<!--end::Title-->
 									<!--begin::Breadcrumb-->
 									<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 pt-1">
-										<!--begin::Item-->
-										<li class="breadcrumb-item text-muted">
-											<a href="index.html" class="text-muted text-hover-primary">
-                                            <i class="ki-duotone ki-home"></i>
-                                            </a>
-										</li>
-										<!--end::Item-->
-										<!--begin::Item-->
-										<li class="breadcrumb-item">
-											<span class="bullet bg-gray-300 w-5px h-2px"></span>
-										</li>
-										<!--end::Item-->
 										<!--begin::Item-->
 										<li class="breadcrumb-item text-muted">System</li>
 										<!--end::Item-->
@@ -1010,50 +1003,6 @@
 								<!--end::Page title-->
 								<!--begin::Action group-->
 								<div class="d-flex align-items-stretch overflow-auto pt-3 pt-lg-0">
-									<!--begin::Action wrapper-->
-									<div class="d-flex align-items-center">
-										<!--begin::Label-->
-										<span class="fs-7 text-gray-700 fw-bold pe-3 d-none d-xxl-block">Quick Tools:</span>
-										<!--end::Label-->
-										<!--begin::Actions-->
-										<div class="d-flex">
-											<!--begin::Action-->
-											<a href="#" class="btn btn-sm btn-icon btn-icon-muted btn-active-icon-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_invite_friends">
-												<i class="ki-duotone ki-file fs-1">
-													<span class="path1"></span>
-													<span class="path2"></span>
-												</i>
-											</a>
-											<!--end::Action-->
-											<!--begin::Notifications-->
-											<div class="d-flex align-items-center">
-												<!--begin::Menu- wrapper-->
-												<a href="apps/subscriptions/add.html" class="btn btn-sm btn-icon btn-icon-muted btn-active-icon-primary">
-													<i class="ki-duotone ki-add-files fs-1">
-														<span class="path1"></span>
-														<span class="path2"></span>
-														<span class="path3"></span>
-													</i>
-												</a>
-												<!--end::Menu wrapper-->
-											</div>
-											<!--end::Notifications-->
-											<!--begin::Quick links-->
-											<div class="d-flex align-items-center">
-												<!--begin::Menu wrapper-->
-												<a href="apps/file-manager/folders.html" class="btn btn-sm btn-icon btn-icon-muted btn-active-icon-primary">
-													<i class="ki-duotone ki-file-up fs-1">
-														<span class="path1"></span>
-														<span class="path2"></span>
-													</i>
-												</a>
-												<!--end::Menu wrapper-->
-											</div>
-											<!--end::Quick links-->
-										</div>
-										<!--end::Actions-->
-									</div>
-									<!--end::Action wrapper-->
 									<!--begin::Theme mode-->
 									<div class="d-flex align-items-center">
 										<!--begin::Menu toggle-->
@@ -2585,284 +2534,9 @@
 			</i>
 		</div>
 		<!--end::Scrolltop-->
-		<!--begin::Modals-->
-		<!--begin::Modals-->
-		<div class="modal fade" id="create_new_user" tabindex="-1" style="display: none;" aria-hidden="true">
-    <!--begin::Modal dialog-->
-    <div class="modal-dialog modal-dialog-centered mw-650px">
-        <!--begin::Modal content-->
-        <div class="modal-content">
-            <!--begin::Modal header-->
-            <div class="modal-header" id="kt_modal_create_api_key_header">
-                <!--begin::Modal title-->
-                <h2>Create New User</h2>
-                <!--end::Modal title-->
-
-                <!--begin::Close-->
-                <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
-                    <i class="ki-duotone ki-cross fs-1"><span class="path1"></span><span class="path2"></span></i>                </div>
-                <!--end::Close-->
-            </div>
-            <!--end::Modal header-->
-
-            <!--begin::Form-->
-            <form id="kt_modal_create_api_key_form" class="form fv-plugins-bootstrap5 fv-plugins-framework" action="#">
-                <!--begin::Modal body-->
-                <div class="modal-body py-10 px-lg-17">
-                    <!--begin::Scroll-->
-                    <div class="scroll-y me-n7 pe-7" id="kt_modal_create_api_key_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_create_api_key_header" data-kt-scroll-wrappers="#kt_modal_create_api_key_scroll" data-kt-scroll-offset="300px" style="max-height: 293px;">
-
-                    <!--begin::Input group-->
-                        <div class="row mb-5">
-
-                            <!--begin::Col-->
-                            <div class="col-md-6 fv-row">
-                                <!--begin::Label-->
-                                <label class="required fs-5 fw-semibold mb-2">First Name</label>
-                                <!--end::Label-->
-
-                                <!--begin::Input-->
-                                <input type="text" class="form-control" id="user_firstname"/>
-                                <!--end::Input-->
-                            </div>
-                            <!--end::Col-->
-
-                            <!--begin::Col-->
-                            <div class="col-md-6 fv-row">
-                                <!--end::Label-->
-                                <label class="required fs-5 fw-semibold mb-2">Last Name</label>
-                                <!--end::Label-->
-
-                                <!--end::Input-->
-                                <input type="text" id="user_lastname" onblur="createUsername();" class="form-control"/>
-                                <!--end::Input-->
-                            </div>
-                            <!--end::Col-->
-                        </div>
-                        <!--end::Input group-->
-
-                        <!--begin::Input group-->
-                        <div class="mb-5 fv-row fv-plugins-icon-container">
-                            <!--begin::Label-->
-                            <label class="required fs-5 fw-semibold mb-2">System Username</label>
-                            <!--end::Label-->
-
-                            <!--begin::Input-->
-                            <input type="text" class="form-control" readonly id="username">
-                            <!--end::Input-->
-                        <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div></div>
-                        <!--end::Input group-->
-
-                    <!--begin::Input group-->
-                        <div class="mb-5 fv-row fv-plugins-icon-container">
-                            <!--begin::Label-->
-                            <label class="required fs-5 fw-semibold mb-2">User Role</label>
-                            <!--end::Label-->
-
-                            <!--begin::Input-->
-                            <select id="userRole" class="form-select" aria-label="Select example">
-                                <option value="" selected="selected">Select here</option>
-                                <option value="001">Manager</option>
-                                <option value="002">Operator</option>
-                                <option value="003">Guest</option>
-                            </select>
-                            <!--end::Input-->
-                        <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div></div>
-                        <!--end::Input group-->
-
-                        <!--begin::Input group-->
-                        <div class="row mb-5">
-
-                            <!--begin::Col-->
-                            <div class="col-md-6 fv-row">
-                                <!--begin::Label-->
-                                <label class="fs-5 fw-semibold mb-2">Email Address</label>
-                                <!--end::Label-->
-
-                                <!--begin::Input-->
-                                <input type="text" class="form-control" id="user_email"/>
-                                <!--end::Input-->
-                            </div>
-                            <!--end::Col-->
-
-                            <!--begin::Col-->
-                            <div class="col-md-6 fv-row">
-                                <!--end::Label-->
-                                <label class="fs-5 fw-semibold mb-2">Phone</label>
-                                <!--end::Label-->
-
-                                <!--end::Input-->
-                                <input type="text" id="user_phone" class="form-control"/>
-                                <!--end::Input-->
-                            </div>
-                            <!--end::Col-->
-                        </div>
-                        <!--end::Input group-->
-                   
-                    </div>
-                    <!--end::Scroll-->
-                </div>
-                <!--end::Modal body-->
-
-                <!--begin::Modal footer-->
-                <div class="modal-footer flex-center">
-                    <!--begin::Button-->
-                    <button type="button" id="kt_modal_create_api_key_cancel" data-bs-dismiss="modal" class="btn btn-danger me-3">
-                        Discard
-                    </button>
-                    <!--end::Button-->
-
-                    <!--begin::Button-->
-                    <button type="button" id="btnCreateNewUser" class="btn btn-primary">
-                        <span class="indicator-label">
-                            Create User
-                        </span>
-                        <span class="indicator-progress">
-                            Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
-                        </span>
-                    </button>
-                    <!--end::Button-->
-                </div>
-                <!--end::Modal footer-->
-            </form>
-            <!--end::Form-->
-        </div>
-        <!--end::Modal content-->
-    </div>
-    <!--end::Modal dialog-->
-</div>
-		<!--end::Modals-->
-		<!--begin::Modals-->
-		<div class="modal fade" id="kt_modal_create_food_menu" tabindex="-1" style="display: none;" aria-hidden="true">
-    <!--begin::Modal dialog-->
-    <div class="modal-dialog modal-dialog-centered mw-650px">
-        <!--begin::Modal content-->
-        <div class="modal-content">
-            <!--begin::Modal header-->
-            <div class="modal-header" id="kt_modal_create_api_key_header">
-                <!--begin::Modal title-->
-                <h2>Create Food Menu</h2>
-                <!--end::Modal title-->
-
-                <!--begin::Close-->
-                <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
-                    <i class="ki-duotone ki-cross fs-1"><span class="path1"></span><span class="path2"></span></i>                </div>
-                <!--end::Close-->
-            </div>
-            <!--end::Modal header-->
-
-            <!--begin::Form-->
-            <form id="kt_modal_create_api_key_form" class="form fv-plugins-bootstrap5 fv-plugins-framework" action="#">
-                <!--begin::Modal body-->
-                <div class="modal-body py-10 px-lg-17">
-                    <!--begin::Scroll-->
-                    <div class="scroll-y me-n7 pe-7" id="kt_modal_create_api_key_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_create_api_key_header" data-kt-scroll-wrappers="#kt_modal_create_api_key_scroll" data-kt-scroll-offset="300px" style="max-height: 293px;">
-
-                    <!--begin::Input group-->
-                        <div class="mb-5 fv-row fv-plugins-icon-container">
-                            <!--begin::Label-->
-                            <label class="required fs-5 fw-semibold mb-2">Food Category</label>
-                            <!--end::Label-->
-
-                            <!--begin::Input-->
-                            <select name="foodCategory" id="foodCategory" class="form-select" aria-label="Select example">
-                                <option value="" selected="selected">Select here</option>
-                                <option value="Food">Food</option>
-                                <option value="Food">Snack</option>
-                                <option value="Food">Drink</option>
-                                <option value="Food">Fruit</option>
-                            </select>
-                            <!--end::Input-->
-                        <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div></div>
-                        <!--end::Input group-->
-                        
-                        <!--begin::Input group-->
-                        <div class="mb-5 fv-row fv-plugins-icon-container">
-                            <!--begin::Label-->
-                            <label class="required fs-5 fw-semibold mb-2">Food Name</label>
-                            <!--end::Label-->
-
-                            <!--begin::Input-->
-                            <input type="text" class="form-control" placeholder="Enter food name here" id="foodName" name="foodName">
-                            <!--end::Input-->
-                        <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div></div>
-                        <!--end::Input group-->
-
-                        <!--begin::Input group-->
-                        <div class="d-flex flex-column mb-5 fv-row fv-plugins-icon-container">
-                            <!--begin::Label-->
-                            <label class="required fs-5 fw-semibold mb-2">Food Description</label>
-                            <!--end::Label-->
-
-                            <!--begin::Input-->
-                            <textarea class="form-control" rows="3" name="foodDesc" id="foodDesc" placeholder="Food Description"></textarea>
-                            <!--end::Input-->
-                        <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div></div>
-                        <!--end::Input group-->
-
-                        <!--begin::Input group-->
-                        <div class="row mb-5">
-                        
-                            <!--begin::Col-->
-                            <div class="col-md-6 fv-row">
-                                <!--begin::Label-->
-                                <label class="required fs-5 fw-semibold mb-2">Amount</label>
-                                <!--end::Label-->
-
-                                <!--begin::Input-->
-                                <input type="text" class="form-control" placeholder="Enter food amount" id="foodAmount" name="foodAmount"/>
-                                <!--end::Input-->
-                            </div>
-                            <!--end::Col-->
-
-                            <!--begin::Col-->
-                            <div class="col-md-6 fv-row">
-                                <!--end::Label-->
-                                <label class="required fs-5 fw-semibold mb-2">Max Quantity</label>
-                                <!--end::Label-->
-
-                                <!--end::Input-->
-                                <input type="number" id="foodQuant" class="form-control" placeholder="Enter max quantity" name="foodQuant"/>
-                                <!--end::Input-->
-                            </div>
-                            <!--end::Col-->
-                        </div>
-                        <!--end::Input group-->
-
-                       
-                    </div>
-                    <!--end::Scroll-->
-                </div>
-                <!--end::Modal body-->
-
-                <!--begin::Modal footer-->
-                <div class="modal-footer flex-center">
-                    <!--begin::Button-->
-                    <button type="button" id="kt_modal_create_api_key_cancel" class="btn btn-light me-3">
-                        Discard
-                    </button>
-                    <!--end::Button-->
-
-                    <!--begin::Button-->
-                    <button type="button" id="btnCreateFoodItem" class="btn btn-primary">
-                        <span class="indicator-label">
-                            Create Food Item
-                        </span>
-                        <span class="indicator-progress">
-                            Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
-                        </span>
-                    </button>
-                    <!--end::Button-->
-                </div>
-                <!--end::Modal footer-->
-            </form>
-            <!--end::Form-->
-        </div>
-        <!--end::Modal content-->
-    </div>
-    <!--end::Modal dialog-->
-		
-		<!--end::Modals-->
+		<?php
+   			require APPROOT . '/views/includes/dashboard/modals.php';
+?>
 	
 		<?php
    require APPROOT . '/views/includes/dashboard/footer.php';

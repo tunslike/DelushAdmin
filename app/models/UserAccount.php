@@ -164,7 +164,7 @@ class UserAccount {
     public function login($username, $password, $ipaddr) {
 
         $this->db->query('SELECT ENTRY_ID, USERNAME, FIRST_NAME, LAST_NAME, PHONE_NUMBER, EMAIL_ADDRESS, ROLE_ID,
-                          FIRST_LOGIN_DATE FROM Delush_USER_ENTRY 
+                          FIRST_LOGIN_DATE, LAST_LOGIN_DATE FROM Delush_USER_ENTRY 
                           WHERE STATUS = 0 AND USERNAME = :username');
 
         //Bind value

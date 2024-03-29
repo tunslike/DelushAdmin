@@ -1,5 +1,5 @@
 <?php
-class Pages extends Controller {
+class Admin extends Controller {
     public function __construct() {
         //$this->userModel = $this->model('User');
     }
@@ -9,6 +9,6 @@ class Pages extends Controller {
             'title' => 'Home page'
         ];
 
-        $this->view('website/index', $data);
+        $this->view('index', $data);
     }
 }

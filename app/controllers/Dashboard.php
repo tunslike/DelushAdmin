@@ -2,6 +2,8 @@
 
 class Dashboard extends Controller {
 
+    public $userModel;
+
     public function __construct(){
 
         error_reporting(E_ALL);
@@ -24,9 +26,6 @@ class Dashboard extends Controller {
 
         //Check for post
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-            //Sanitize post data
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
             $data = [
 

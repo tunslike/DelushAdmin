@@ -1,0 +1,235 @@
+
+html, body {
+    box-sizing: border-box;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+  }
+  .wrapper {
+    box-sizing: border-box;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .page-header, .page-footer {
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+  .page-body {
+    flex-grow: 1;
+  }
+
+  .top-bar {
+    background-color: #16c653;
+    height: 10px;
+  }
+
+  .logo-area {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .logo-area img {
+    width: 10%;
+    height: 100%;
+  }
+
+  .footer-box {
+    padding-top: 4%;
+    padding-bottom: 4%;
+    text-align: center;
+    color: #258a53;
+  }
+
+  .footer{
+    background-color: #e9efef;
+  }
+
+  .discount-area {
+    background-color: #f6f6f6;
+  }
+
+  .discount-box {
+    width: 65%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 20px;
+  }
+
+  .nav-area ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  
+  .nav-area li {
+    float: left;
+    margin-right: 20px;
+  }
+
+  .contact-us {
+    background-color: #FF7C00;
+    border-radius: 25px;
+  }
+
+  .display-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .discount-box-title{
+    font-weight: 700;
+    font-size: 40px;
+    color: #258a53;
+    text-align: right;
+    width: 400px;
+    margin-right: 50px;
+  }
+  .display-area {
+    background-color: #258a53;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    min-height: 300px;
+    background-image: url('/delushwebsite/public/img/displaybg.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  .body-text ul li {
+    font-family: 400;
+    font-size: 13px;
+    color: #515151;
+  }
+
+  .body-text p {
+    font-family: 400;
+    font-size: 13px;
+    color: #515151;
+  }
+
+  .body-text h1 {
+    font-family: 500;
+    font-size: 20px;
+    color: #258a53;
+  }
+
+
+  .body-text h2 {
+    font-family: 500;
+    font-size: 18px;
+    color: #258a53;
+  }
+
+  .body-text h3 {
+    font-family: 500;
+    font-size: 18px;
+    color: #258a53;
+  }
+
+  .body-text {
+    width: 58%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    padding: 50px;
+    border-radius: 30px;
+  }
+
+  .inner-body {
+    background-color: #f6f6f6;
+    padding-top: 2%;
+    padding-bottom: 2%;
+  }
+
+  .inner-header-title {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .inner-header-title h3 {
+    font-weight: 700;
+    font-size: 30px;
+    color: #ffffff;
+  }
+
+  .inner-header {
+    background-color: #258a53;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    height: 250;
+    background-image: url('/delushwebsite/public/img/displaybg.png');
+    background-repeat: no-repeat;
+    background-position-x: center;
+  }
+
+  .download-links {
+    background-image: url('/delushwebsite/public/img/download_links.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 80px;
+    width: 250px;
+    margin-top: 20px;
+    margin-left: 5px;
+  }
+
+  .download-btn {
+    background-color: #FF7C00;
+    color: #fff;
+    padding: 14px 20px;
+    border-radius: 25px;
+    width: 300px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .title-box h4 {
+    font-weight: 600;
+    font-size: 18px;
+    color: #37FF94;
+  }
+  .title-box h2 {
+    margin-top: -10px;
+    font-weight: 700;
+    font-size: 38px;
+    color: #ffffff;
+    width: 70%;
+  }
+
+  .nav-area .contact-us a{
+    color: #ffffff;
+  }
+  
+  .nav-area li a {
+    display: block;
+    text-align: center;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: 600;
+    color: #258a53;
+    font-size: 15px;
+  }
+  
+  .nav-area li a:hover {
+    background-color: #FF7C00;
+    border-radius: 25px;
+    color: #ffffff;
+  }

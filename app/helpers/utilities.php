@@ -35,7 +35,7 @@
 
     function formatEventDate($date) {
         $date=date_create($date);
-        return date_format($date,"l, j F Y");
+        return date_format($date,"l, j F Y, h:i a");
     }
 
     function formatDateCreated($date) {

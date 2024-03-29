@@ -4,7 +4,7 @@
              <!--begin:Menu item-->
              <div class="menu-item">
                                     <!--begin:Menu link-->
-                                    <a class="menu-link" href="<?php echo URLROOT ?>/dashboard/home">
+                                    <a class="menu-link" href="<?php echo URLROOT ?>dashboard/home">
                                         <span class="menu-icon">
                                             <i class="ki-duotone ki-home fs-2"></i>
                                         </span>
@@ -104,6 +104,7 @@
 								</div>
 								<!--end:Menu item-->
 							  
+								<?php if(isset($_SESSION['role']) && $_SESSION['role'] == '001') : ?>
 								<!--begin:Menu item-->
 								<div class="menu-item pt-5">
 									<!--begin:Menu content-->
@@ -193,5 +194,7 @@
 									<!--end:Menu sub-->
 								</div>
 								<!--end:Menu item-->
+
+								<?php endif; ?>
 								
 				

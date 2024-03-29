@@ -2,6 +2,8 @@
 
 class Account extends Controller {
 
+    public $userModel;
+
     public function __construct(){
 
         error_reporting(E_ALL);
@@ -111,6 +113,7 @@ class Account extends Controller {
         $_SESSION['mobile'] = $user->MOBILE_PHONE;
         $_SESSION['email'] = $user->EMAIL_ADDRESS;
         $_SESSION['role'] = $user->ROLE_ID;
+        $_SESSION['lastLoginDate'] = $user->LAST_LOGIN_DATE;
 
         //redirect to home page
         header('location:' . URLROOT . 'dashboard/home');

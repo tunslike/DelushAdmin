@@ -585,7 +585,7 @@ function logoutUser() {
                 url: "http://localhost/delushadmin/account/logoutUser",
                 success: function (data) {
                 
-                    window.location.replace("http://localhost/delushadmin/signin");
+                    window.location.replace("http://localhost/delushadmin/admin");
                     return;
     
                 },

@@ -102,20 +102,10 @@
 							<!--begin::Toggle-->
 							<button class="btn btn-flex btn-link btn-color-gray-700 btn-active-color-primary rotate fs-base" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start" data-kt-menu-offset="0px, 0px">
 								<span data-kt-element="current-lang-name" class="me-1">2024 Copyright Delush</span>
-								<span class="d-flex flex-center rotate-180">
-									<i class="ki-outline ki-down fs-5 text-muted m-0"></i>
-								</span>
 							</button>
 							<!--end::Toggle-->
 						</div>
 						<!--end::Languages-->
-						<!--begin::Links-->
-						<div class="d-flex fw-semibold text-primary fs-base gap-5">
-							<a href="pages/team.html" target="_blank">Terms</a>
-							<a href="pages/pricing/column.html" target="_blank">Plans</a>
-							<a href="pages/contact.html" target="_blank">Contact Us</a>
-						</div>
-						<!--end::Links-->
 					</div>
 					<!--end::Footer-->
 				</div>
